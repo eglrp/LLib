@@ -1,6 +1,12 @@
 # LLib
 
 ## Introduction
+LLib is a library to support  my own research prjects on robotic perception which include:
+1. SLAM
+2. 3D Reconstruction
+3. Sensor
+4. Machine Learning
+5. Computer Vision
 
 ## Function
 
