@@ -37,6 +37,8 @@ LLib is a library to support  my own research prjects on robotic perception whic
 ## Algorithms
 1. [Marching Cubes](http://paulbourke.net/geometry/polygonise/)
 2. [Raycasting](https://lodev.org/cgtutor/raycasting.html)
+3. EKF
+4. ICP
 
 ## Sensor
 1. Camera (Mono/Stereo/Multi/Fisheye/RGD-D)
