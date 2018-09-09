@@ -36,6 +36,7 @@ LLib is a library to support  my own research prjects on robotic perception whic
 16. [MemoryPool](https://github.com/cacay/MemoryPool): An easy to use and efficient memory pool allocator written in C++. 
 17. [ICPCUDA](https://github.com/mp3guy/ICPCUDA): Super fast implementation of ICP in CUDA for compute capable devices 2.0 or higher
 18. [SimpleOctree](https://github.com/brandonpelfrey/SimpleOctree): A simple octree with good commenting for learning how octrees work
+19. [tnt](https://github.com/pytorch/tnt): Simple tools for logging and visualizing, loading and training
 
 ## Algorithms
 1. [Marching Cubes](http://paulbourke.net/geometry/polygonise/)
