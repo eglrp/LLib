@@ -1,26 +1,28 @@
 #ifndef _LL_LINE2D_H_
 #define _LL_LINE2D_H_
 
+#include "vectype.h"
+
 namespace LLib
 {
 
-    template<typename T>
-    class Line2
+    template<typename VecType>
+    class line2
     {
         private:
-        	vec2<T> p;
-        	vec2<T> dir;
+        	VecType p;
+        	VecType dir;
 
         public:
-            Line2(const vec2<T> &p0, const vec2<T> &p1)
+            line2(const VecType &p0, const VecType &p1);
 
-        	const vec2<T> & getP() const
-        	const vec2<T> & getDir() const
+        	const VecType & getP() const;
+        	const VecType & getDir() const;
 
     };  // class Line2
 
-    template <typename T>
-    std::ostream &operator<<(std::ostream &os, const Line2<T> &l)
+    template <typename VecType>
+    std::ostream &operator<<(std::ostream &os, const line2<VecType> &l)
     {
         os << l.getP() << ", " << l.getDir() << std::endl;
         return os;
@@ -29,22 +31,24 @@ namespace LLib
     /*
             Line2 Implementation
     */
-    template<typename T>
-    inline Line2<T>::Line2(const vec2<T> &p0, const vec2<T> &p1)
+    template<typename VecType>
+    inline line2<VecType>::line2(const VecType &p0, const VecType &p1)
     {
+        assert(p0 != p1);
+
         p = p0;
         dir = p1 - p0;
-        dir.normalize();
+        dir /= dir.norm();
 	}
 
-    template<typename T>
-	inline const vec2<T> &Line2<T>::getP()
+    template<typename VecType>
+	inline const VecType &line2<VecType>::getP() const
     {
         return p;
 	}
 
-    template<typename T>
-	inline const vec2<T> &Line2<T>::getDir()
+    template<typename VecType>
+	inline const VecType &line2<VecType>::getDir() const
     {
         return dir;
 	}
@@ -52,8 +56,8 @@ namespace LLib
     /*
             Line2 Defination
     */
-    typedef Line2<float> Line2f;
-    typedef Line2<double> Line2d;
+    typedef line2<vec2f> line2f;
+    typedef line2<vec2d> line2d;
 
 }  // namespace LLib
 

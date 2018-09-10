@@ -1,57 +1,60 @@
 #ifndef _LL_LINESEGMENT3_H_
 #define _LL_LINESEGMENT3_H_
 
+#include "vectype.h"
+
 namespace LLib
 {
-
-    template<typename T>
-    class LineSegment3
+    template<typename VecType>
+    class lineSegment3
     {
         private:
-        	vec3<T> p0;
-        	vec3<T> p1;
+        	VecType p0;
+        	VecType p1;
 
         public:
-            LineSegment3(const vec3<T> &p0_, const vec3<T> &p1_)
+            lineSegment3(const VecType &p0_, const VecType &p1_);
 
-        	const vec3<T> & getP0() const
-        	const vec3<T> & getP1() const
-    };  // class LineSegment3
+        	const VecType &getP0() const;
+        	const VecType &getP1() const;
 
-    template <typename T>
-    std::ostream &operator<<(std::ostream &os, const LineSegment3<T> &l)
+    };  // class lineSegment3
+
+    template <typename VecType>
+    std::ostream &operator<<(std::ostream &os, const lineSegment3<VecType> &l)
     {
         os << l.getP0() << ", " << l.getP1() << std::endl;
         return os;
     }
 
     /*
-            LineSegment3 Implementation
-    */
-    template<typename T>
-    LineSegment3<T>::LineSegment3(const vec3<T> &p0_, const vec3<T> &p1_)
+            lineSegment3 Implementation
+    */ 
+
+    template<typename VecType>
+    inline lineSegment3<VecType>::lineSegment3(const VecType &p0_, const VecType &p1_)
     {
         p0 = p0_;
         p1 = p1_;
-	}
+    }
 
-    template<typename T>
-	const vec3<T> &LineSegment3<T>::getP0()
+    template<typename VecType>
+    inline const VecType &lineSegment3<VecType>::getP0() const
     {
         return p0;
-	}
+    }
 
-    template<typename T>
-	const vec3<T> &LineSegment3<T>::getP1()
+    template<typename VecType>
+    inline const VecType &lineSegment3<VecType>::getP1() const
     {
         return p1;
     }
 
     /*
-            LineSegment3 Defination
-    */
-    typedef LineSegment3<float> LineSegment3f;
-    typedef LineSegment3<double> LineSegment3d;
+            lineSegment2 Defination
+    */ 
+    typedef lineSegment3<vec3f> lineSegment3f;
+    typedef lineSegment3<vec3d> lineSegment3d;
 
 }  // namespace LLib
 

@@ -1,59 +1,61 @@
 #ifndef _LL_LINESEGMENT2_H_
 #define _LL_LINESEGMENT2_H_
 
+#include "vectype.h"
+
 namespace LLib
 {
 
-    template<typename T>
-    class LineSegment2
+    template<typename VecType>
+    class lineSegment2
     {
         private:
-        	vec2<T> p0;
-        	vec2<T> p1;
+        	VecType p0;
+        	VecType p1;
 
         public:
-            LineSegment2(const vec2<T> &p0_, const vec2<T> &p1_)
+            lineSegment2(const VecType &p0_, const VecType &p1_);
 
-        	const vec2<T> &getP0() const
-        	const vec2<T> & getP1() const
+        	const VecType &getP0() const;
+        	const VecType &getP1() const;
 
-    };  // class LineSegment2
+    };  // class lineSegment2
 
-    template <typename T>
-    std::ostream &operator<<(std::ostream &os, const LineSegment2<T> &l)
+    template <typename VecType>
+    std::ostream &operator<<(std::ostream &os, const lineSegment2<VecType> &l)
     {
         os << l.getP0() << ", " << l.getP1() << std::endl;
         return os;
     }
 
     /*
-            LineSegment2 Implementation
+            lineSegment2 Implementation
     */ 
 
-    template<typename T>
-    inline LineSegment2<T>::LineSegment2(const vec2<T> &p0_, const vec2<T> &p1_)
+    template<typename VecType>
+    inline lineSegment2<VecType>::lineSegment2(const VecType &p0_, const VecType &p1_)
     {
         p0 = p0_;
         p1 = p1_;
     }
 
-    template<typename T>
-    inline const vec2<T> &LineSegment2<T>::getP0()
+    template<typename VecType>
+    inline const VecType &lineSegment2<VecType>::getP0() const
     {
         return p0;
     }
 
-    template<typename T>
-    inline const vec2<T> &LineSegment2<T>::getP1()
+    template<typename VecType>
+    inline const VecType &lineSegment2<VecType>::getP1() const
     {
         return p1;
     }
 
     /*
-            LineSegment2 Defination
+            lineSegment2 Defination
     */ 
-    typedef LineSegment2<float> LineSegment2f;
-    typedef LineSegment2<double> LineSegment2d;
+    typedef lineSegment2<vec2f> lineSegment2f;
+    typedef lineSegment2<vec2d> lineSegment2d;
 
 }  // namespace LLib
 
