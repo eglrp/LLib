@@ -149,15 +149,15 @@ public:
 		return (m_AxesScaled[0] + m_AxesScaled[1]).length();
 	}
 
-	std::vector< LineSegment2<FloatType> > getEdges() const
+	std::vector< lineSegment<FloatType> > getEdges() const
 	{
-		std::vector< LineSegment2<FloatType> > result;	result.reserve(4);
+		std::vector< lineSegment<FloatType> > result;	result.reserve(4);
 		auto v = getVertices();
 
-		result.push_back(LineSegment2<FloatType>(v[0], v[1]));
-		result.push_back(LineSegment2<FloatType>(v[1], v[2]));
-		result.push_back(LineSegment2<FloatType>(v[2], v[3]));
-		result.push_back(LineSegment2<FloatType>(v[3], v[0]));
+		result.push_back(lineSegment<FloatType>(v[0], v[1]));
+		result.push_back(lineSegment<FloatType>(v[1], v[2]));
+		result.push_back(lineSegment<FloatType>(v[2], v[3]));
+		result.push_back(lineSegment<FloatType>(v[3], v[0]));
 
 		return result;
 	}

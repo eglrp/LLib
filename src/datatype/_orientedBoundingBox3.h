@@ -484,7 +484,7 @@ private:
 		return true;
 	}
 	//! returns the signed distance of the box to a plane (negative if plane is inside; positive if outside)
-	inline FloatType planeDistance(const Plane<FloatType> &p) const {
+	inline FloatType planeDistance(const plane<FloatType> &p) const {
 		vec3<FloatType> extent = getExtent();
 		FloatType r = (FloatType)0.5 * (
 			extent.x * std::abs(p.getNormal() | (m_AxesScaled[0] / extent.x)) +
@@ -513,7 +513,7 @@ private:
 		//	);
 		//FloatType s = (planeNormal | center) - planeDistance;
 		//if (std::abs(s) <= r + eps)	{	//box intersects face plane
-		Plane<FloatType> p(points);
+		plane<FloatType> p(points);
 		FloatType planeDist = planeDistance(p);
 		if (planeDist <= -eps) {
 			Matrix4x4<FloatType> worldToOOBB = getWorldToOOBB();
@@ -536,7 +536,7 @@ private:
 		FloatType minPlaneExtension = FLT_MAX;
 		for (unsigned int i = 0; i < 6; i++) {
 			OOBB_PLANE which = (OOBB_PLANE)i;
-			Plane<FloatType> currPlane = box.getPlane(which);
+			plane<FloatType> currPlane = box.getPlane(which);
 			assert(floatEqual(currPlane.getNormal().length(), 1.0f));
 			assert(floatEqual(faceNormal.length(), 1.0f));
 			if ((currPlane.getNormal() | faceNormal) < (FloatType)0.1)	continue;
@@ -574,7 +574,7 @@ private:
 			unsigned int which = (unsigned int)-1;
 			FloatType maxAssess = -FLT_MAX;
 			for (unsigned int i = 0; i < 3; i++) {
-				Plane<FloatType> front, back;
+				plane<FloatType> front, back;
 				front = getPlaneZFront();
 				back = getPlaneZBack();
 				//distance in box is negative; outside positive - we must make sure that we have at least two positive distances
@@ -595,7 +595,7 @@ private:
 				swapAxes();
 			}
 		}
-		Plane<FloatType> front, back;
+		plane<FloatType> front, back;
 		front = getPlaneZFront();
 		back = getPlaneZBack();
 		//distance in box is negative; outside positive - we must make sure that we have at least two positive distances
@@ -713,7 +713,7 @@ private:
 		Z_FRONT,
 		Z_BACK
 	};
-	inline Plane<FloatType> getPlane(OOBB_PLANE which) const {
+	inline plane<FloatType> getPlane(OOBB_PLANE which) const {
 		switch (which) {
 			case X_FRONT:	return getPlaneXFront();
 			case X_BACK:	return getPlaneXBack();
@@ -723,25 +723,25 @@ private:
 			case Z_BACK:	return getPlaneZBack();
 			default: assert(false);
 		}
-		return Plane<FloatType>();
+		return plane<FloatType>();
 	}
-	inline Plane<FloatType> getPlaneXFront() const {
-		return Plane<FloatType>(-m_AxesScaled[0].getNormalized(), m_Anchor);
+	inline plane<FloatType> getPlaneXFront() const {
+		return plane<FloatType>(-m_AxesScaled[0].getNormalized(), m_Anchor);
 	}
-	inline Plane<FloatType> getPlaneXBack() const {
-		return Plane<FloatType>(m_AxesScaled[0].getNormalized(), m_Anchor + m_AxesScaled[0]);
+	inline plane<FloatType> getPlaneXBack() const {
+		return plane<FloatType>(m_AxesScaled[0].getNormalized(), m_Anchor + m_AxesScaled[0]);
 	}
-	inline Plane<FloatType> getPlaneYFront() const {
-		return Plane<FloatType>(-m_AxesScaled[1].getNormalized(), m_Anchor);
+	inline plane<FloatType> getPlaneYFront() const {
+		return plane<FloatType>(-m_AxesScaled[1].getNormalized(), m_Anchor);
 	}
-	inline Plane<FloatType> getPlaneYBack() const {
-		return Plane<FloatType>(m_AxesScaled[1].getNormalized(), m_Anchor + m_AxesScaled[1]);
+	inline plane<FloatType> getPlaneYBack() const {
+		return plane<FloatType>(m_AxesScaled[1].getNormalized(), m_Anchor + m_AxesScaled[1]);
 	}
-	inline Plane<FloatType> getPlaneZFront() const {
-		return Plane<FloatType>(-m_AxesScaled[2].getNormalized(), m_Anchor);
+	inline plane<FloatType> getPlaneZFront() const {
+		return plane<FloatType>(-m_AxesScaled[2].getNormalized(), m_Anchor);
 	}
-	inline Plane<FloatType> getPlaneZBack() const {
-		return Plane<FloatType>(m_AxesScaled[2].getNormalized(), m_Anchor + m_AxesScaled[2]);
+	inline plane<FloatType> getPlaneZBack() const {
+		return plane<FloatType>(m_AxesScaled[2].getNormalized(), m_Anchor + m_AxesScaled[2]);
 	}
 	//! returns the four corner points of the z = 1; back plane
 	inline void getFaceZBack(vec3<FloatType>* points) const {

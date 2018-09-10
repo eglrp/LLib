@@ -27,7 +27,7 @@ T distSq(const vec3<T> &ptA, const vec3<T> &ptB)
 }
 
 template <class T>
-T distSq(const LineSegment2<T> &seg, const vec2<T> &p)
+T distSq(const lineSegment<T> &seg, const vec2<T> &p)
 {
     const vec2<T> &v = seg.p0();
     const vec2<T> &w = seg.p1();
@@ -81,7 +81,7 @@ T distSq(const vec3<T> &pt, const OrientedBoundingBox3<T> &box)
 // code adapted from http://geomalgorithms.com/a07-_distance.html#dist3D_Segment_to_Segment
 //
 template <class T>
-double distSq(const LineSegment2<T> &s0, const LineSegment2<T> &s1)
+double distSq(const lineSegment<T> &s0, const lineSegment<T> &s1)
 {
     const vec2<T> u = s0.delta();
     const vec2<T> v = s1.delta();

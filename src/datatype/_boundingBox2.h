@@ -99,26 +99,26 @@ namespace ml {
 		}
 
 
-		std::vector< LineSegment2<FloatType> > getEdges() const
+		std::vector< lineSegment<FloatType> > getEdges() const
 		{
-			std::vector< LineSegment2<FloatType> > result;
+			std::vector< lineSegment<FloatType> > result;
 
 			auto v = getVertices();
 
-			result.push_back(LineSegment2<FloatType>(v[0], v[1]));
-			result.push_back(LineSegment2<FloatType>(v[1], v[2]));
-			result.push_back(LineSegment2<FloatType>(v[2], v[3]));
-			result.push_back(LineSegment2<FloatType>(v[3], v[0]));
+			result.push_back(lineSegment<FloatType>(v[0], v[1]));
+			result.push_back(lineSegment<FloatType>(v[1], v[2]));
+			result.push_back(lineSegment<FloatType>(v[2], v[3]));
+			result.push_back(lineSegment<FloatType>(v[3], v[0]));
 
-			result.push_back(LineSegment2<FloatType>(v[4], v[5]));
-			result.push_back(LineSegment2<FloatType>(v[5], v[6]));
-			result.push_back(LineSegment2<FloatType>(v[6], v[7]));
-			result.push_back(LineSegment2<FloatType>(v[7], v[4]));
+			result.push_back(lineSegment<FloatType>(v[4], v[5]));
+			result.push_back(lineSegment<FloatType>(v[5], v[6]));
+			result.push_back(lineSegment<FloatType>(v[6], v[7]));
+			result.push_back(lineSegment<FloatType>(v[7], v[4]));
 
-			result.push_back(LineSegment2<FloatType>(v[0], v[4]));
-			result.push_back(LineSegment2<FloatType>(v[1], v[5]));
-			result.push_back(LineSegment2<FloatType>(v[2], v[6]));
-			result.push_back(LineSegment2<FloatType>(v[3], v[7]));
+			result.push_back(lineSegment<FloatType>(v[0], v[4]));
+			result.push_back(lineSegment<FloatType>(v[1], v[5]));
+			result.push_back(lineSegment<FloatType>(v[2], v[6]));
+			result.push_back(lineSegment<FloatType>(v[3], v[7]));
 
 			return result;
 		}

@@ -1,45 +1,58 @@
-#ifndef _TRIANGLE_H_
-#define _TRIANGLE_H_
+#ifndef _LL_TRIANGLE_H_
+#define _LL_TRIANGLE_H_
 
-namespace ml {
+#include "vectype.h"
 
-template<class T>
-struct Triangle
+namespace LLib
 {
-    Triangle() {}
-    Triangle(const vec3<T> &v0, const vec3<T> &v1, const vec3<T> &v2)
+
+    template<typename VecType>
+    struct triangle
     {
-        vertices[0] = v0;
-        vertices[1] = v1;
-        vertices[2] = v2;
-    }
-    vec3<T> getNormal() const
-    {
-        return ml::math::triangleNormal(vertices[0], vertices[1], vertices[2]);
-    }
+        using FloatType = typename VecType::Scalar;
 
-	float getArea() const {
-		vec3f ab = vertices[1] - vertices[0];
-		vec3f ac = vertices[2] - vertices[0];
-		float len = ab.length() * ac.length();
-		float cosTheta = (ab | ac) / len;
-		if (fabs(cosTheta + 1) < 0.00001f || fabs(cosTheta - 1) < 0.00001f) {
-			return 0;
-		}
-		float theta = std::acos(cosTheta);
-		float area (0.5f * len * std::sin(theta));
-		MLIB_ASSERT(area > 0);
-		return area;
-	}
+        VecType vertices[3];
 
-    vec3<T> vertices[3];
+        triangle() {}
+        triangle(const VecType &v0, const VecType &v1, const VecType &v2) { vertices[0] = v0; vertices[1] = v1; vertices[2] = v2; }
 
-};
+        VecType getNormal() const;
+    	FloatType getArea() const;
+    };
 
-typedef Triangle<float> Trianglef;
-typedef Triangle<double> Triangled;
+    // TODO:
+    // template<typename VecType>
+    // inline VecType triangle<VecType>::getNormal() const
+    // {
+    //     auto normal = (vertices[1] - vertices[0]).cross(vertices[2] - vertices[0]);
+    //     normal /= normal.norm();
+    //     return normal; 
+    // }
+    
+    // TODO:
+    // template<typename VecType>
+    // inline typename VecType::Scalar triangle<VecType>::getArea() const 
+    // {
+    // 	VecType ab = vertices[1] - vertices[0];
+    // 	VecType ac = vertices[2] - vertices[0];
+    // 	FloatType len = ab.norm() * ac.norm();
+    // 	FloatType cosTheta = (ab | ac) / len;
+    // 	if (fabs(cosTheta + 1) < 0.00001f || fabs(cosTheta - 1) < 0.00001f) {
+    // 		return 0;
+    // 	}
+    // 	FloatType theta = std::acos(cosTheta);
+    // 	FloatType area (0.5f * len * std::sin(theta));
+    // 	assert(area > 0);
+    // 	return area;
+    // }
 
-} //namespace ml
+    using triangle2f = triangle<vec2f>;
+    using triangle2d = triangle<vec2d>;
+    using triangle3f = triangle<vec3f>;
+    using triangle3d = triangle<vec3d>;
 
 
-#endif
+} //namespace LLib
+
+
+#endif  // _LL_TRIANGLE_H_

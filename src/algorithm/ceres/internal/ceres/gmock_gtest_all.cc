@@ -651,7 +651,7 @@ GTEST_API_ std::string CodePointToUtf8(UInt32 code_point);
 // (i.e. outside of Unicode range U+0 to U+10FFFF) they will be output
 // as '(Invalid Unicode 0xXXXXXXXX)'. If the string is in UTF16 encoding
 // and contains invalid UTF-16 surrogate pairs, values in those pairs
-// will be encoded as individual Unicode characters from Basic Normal Plane.
+// will be encoded as individual Unicode characters from Basic Normal plane.
 GTEST_API_ std::string WideStringToUtf8(const wchar_t* str, int num_chars);
 
 // Reads the GTEST_SHARD_STATUS_FILE environment variable, and creates the file
@@ -3267,7 +3267,7 @@ inline UInt32 CreateCodePointFromUtf16SurrogatePair(wchar_t first,
 // (i.e. outside of Unicode range U+0 to U+10FFFF) they will be output
 // as '(Invalid Unicode 0xXXXXXXXX)'. If the string is in UTF16 encoding
 // and contains invalid UTF-16 surrogate pairs, values in those pairs
-// will be encoded as individual Unicode characters from Basic Normal Plane.
+// will be encoded as individual Unicode characters from Basic Normal plane.
 std::string WideStringToUtf8(const wchar_t* str, int num_chars) {
   if (num_chars == -1)
     num_chars = static_cast<int>(wcslen(str));

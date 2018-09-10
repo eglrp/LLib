@@ -140,7 +140,7 @@ inline bool JacobiRotation<Scalar>::makeJacobi(const MatrixBase<Derived>& m, Ind
   * Output: \verbinclude Jacobi_makeGivens.out
   *
   * This function implements the continuous Givens rotation generation algorithm
-  * found in Anderson (2000), Discontinuous Plane Rotations and the Symmetric Eigenvalue Problem.
+  * found in Anderson (2000), Discontinuous plane Rotations and the Symmetric Eigenvalue Problem.
   * LAPACK Working Note 150, University of Tennessee, UT-CS-00-454, December 4, 2000.
   *
   * \sa MatrixBase::applyOnTheLeft(), MatrixBase::applyOnTheRight()

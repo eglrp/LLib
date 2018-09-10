@@ -330,20 +330,20 @@ public:
 	}
 
 
-	Plane<FloatType> getBottomPlane() const {
+	plane<FloatType> getBottomPlane() const {
 		std::vector<vec3<FloatType>> vertices; vertices.resize(3);
 		vertices[0] = vec3<FloatType>(minX, minY, minZ);
 		vertices[2] = vec3<FloatType>(maxX, minY, minZ);
 		vertices[1] = vec3<FloatType>(maxX, maxY, minZ);
-		return Plane<FloatType>(&vertices[0]);
+		return plane<FloatType>(&vertices[0]);
 	}
 
-	Plane<FloatType> getTopPlane() const {
+	plane<FloatType> getTopPlane() const {
 		std::vector<vec3<FloatType>> vertices; vertices.resize(3);
 		vertices[0] = vec3<FloatType>(minX, minY, maxZ);
 		vertices[1] = vec3<FloatType>(maxX, minY, maxZ);
 		vertices[2] = vec3<FloatType>(maxX, maxY, maxZ);
-		return Plane<FloatType>(&vertices[0]);
+		return plane<FloatType>(&vertices[0]);
 	}
 
 	void makeTriMeshBottomPlane(std::vector<vec3<FloatType>>& vertices, std::vector<vec3ui>& indices, std::vector<vec3<FloatType>>& normals) const {

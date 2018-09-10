@@ -1,7 +1,7 @@
-#include "mattype.h"
+#include "../mattype.h"
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "../utils/doctest.h"
+#include "../../utils/doctest.h"
 
 using namespace LLib;
 

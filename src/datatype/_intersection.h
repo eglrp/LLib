@@ -35,7 +35,7 @@ namespace intersection {
 
     //2D line-line intersection
     template <class T>
-    bool intersectLineSegment2LineSegment2(const LineSegment2<T> &lineA, const LineSegment2<T> &lineB, vec2<T> &result)
+    bool intersectLineSegment2LineSegment2(const lineSegment<T> &lineA, const lineSegment<T> &lineB, vec2<T> &result)
     {
         //
         // http://www.ahinson.com/algorithms_general/Sections/Geometry/ParametricLineIntersection.pdf
@@ -718,7 +718,7 @@ namespace intersection {
 	int intersectBoxPlane(
 		const vec3<FloatType>& bbBoxMin,
 		const vec3<FloatType>& bbBoxMax,
-		const Plane<FloatType>& plane) 
+		const plane<FloatType>& plane) 
 	{
 		FloatType BOX_PLANE_EPSILON = (FloatType)0.00001;
 
@@ -787,7 +787,7 @@ namespace intersection {
 	{
 		//TODO
 		//if(!collide_plane(triangle_plane)) return false;
-		if (intersectBoxPlane(bbBoxMin, bbBoxMax, Plane<FloatType>(p0,p1,p2)) != 1) return false;
+		if (intersectBoxPlane(bbBoxMin, bbBoxMax, plane<FloatType>(p0,p1,p2)) != 1) return false;
 
 		vec3<FloatType> center = (FloatType)0.5 * (bbBoxMin + bbBoxMax);
 		vec3<FloatType> extent = bbBoxMax - center;

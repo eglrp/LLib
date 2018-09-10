@@ -9,14 +9,14 @@ struct Polygon
     static Polygon<T> clip(const Polygon<T> &sourcePoly, const Polygon<T> &clipPoly);
     static Polygon<T> clip(const Polygon<T> &sourcePoly, const Line2<T> &clipLine, const vec2<T> &clipCentroid);
 
-    vector< LineSegment2<T> > segments() const
+    vector< lineSegment<T> > segments() const
     {
-        vector< LineSegment2<T> > result;
+        vector< lineSegment<T> > result;
         if (points.size() <= 1)
             return result;
         for (UINT pointIndex = 0; pointIndex < points.size() - 1; pointIndex++)
-            result.push_back(LineSegment2<T>(points[pointIndex], points[pointIndex + 1]));
-        result.push_back(LineSegment2<T>(points.back(), points[0]));
+            result.push_back(lineSegment<T>(points[pointIndex], points[pointIndex + 1]));
+        result.push_back(lineSegment<T>(points.back(), points[0]));
         return result;
     }
 
@@ -118,7 +118,7 @@ Polygon<T> Polygon<T>::clip(const Polygon<T> &sourcePoly, const Polygon<T> &clip
     Polygon<T> output = sourcePoly;
     vec2<T> clipCentroid = clipPoly.centroid();
 
-    for (const LineSegment2<T> &clipSegment : clipPoly.segments())
+    for (const lineSegment<T> &clipSegment : clipPoly.segments())
         output = clip(output, Line2<T>(clipSegment), clipCentroid);
 
     return output;
