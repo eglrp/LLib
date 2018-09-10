@@ -1,44 +1,58 @@
-#ifndef CORE_GRAPHICS_LINESEGMENT3_H_
-#define CORE_GRAPHICS_LINESEGMENT3_H_
+#ifndef _LL_LINESEGMENT3_H_
+#define _LL_LINESEGMENT3_H_
 
-namespace ml {
-
-template<class FloatType>
-class LineSegment3
+namespace LLib
 {
-public:
 
-    LineSegment3(const vec3<FloatType> &p0, const vec3<FloatType> &p1)
+    template<typename T>
+    class LineSegment3
     {
-        m_p0 = p0;
-        m_p1 = p1;
-        m_delta = m_p1 - m_p0;
+        private:
+        	vec3<T> p0;
+        	vec3<T> p1;
+
+        public:
+            LineSegment3(const vec3<T> &p0_, const vec3<T> &p1_)
+
+        	const vec3<T> & getP0() const
+        	const vec3<T> & getP1() const
+    };  // class LineSegment3
+
+    template <typename T>
+    std::ostream &operator<<(std::ostream &os, const LineSegment3<T> &l)
+    {
+        os << l.getP0() << ", " << l.getP1() << std::endl;
+        return os;
+    }
+
+    /*
+            LineSegment3 Implementation
+    */
+    template<typename T>
+    LineSegment3<T>::LineSegment3(const vec3<T> &p0_, const vec3<T> &p1_)
+    {
+        p0 = p0_;
+        p1 = p1_;
 	}
 
-	const vec3<FloatType>& p0() const
+    template<typename T>
+	const vec3<T> &LineSegment3<T>::getP0()
     {
-        return m_p0;
+        return p0;
 	}
 
-	const vec3<FloatType>& p1() const
+    template<typename T>
+	const vec3<T> &LineSegment3<T>::getP1()
     {
-        return m_p1;
-	}
+        return p1;
+    }
 
-	const vec3<FloatType>& delta() const
-    {
-        return m_delta;
-	}
+    /*
+            LineSegment3 Defination
+    */
+    typedef LineSegment3<float> LineSegment3f;
+    typedef LineSegment3<double> LineSegment3d;
 
-private:
-	vec3<FloatType> m_p0;
-	vec3<FloatType> m_p1;
-	vec3<FloatType> m_delta;  //p1 - p0
-};
+}  // namespace LLib
 
-typedef LineSegment3<float> LineSegment3f;
-typedef LineSegment3<double> LineSegment3d;
-
-}  // namespace ml
-
-#endif  // CORE_GRAPHICS_LINESEGMENT3D_H_
+#endif  // _LL_LINESEGMENT3D_H_

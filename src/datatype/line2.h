@@ -1,42 +1,60 @@
-#ifndef CORE_GRAPHICS_LINE2D_H_
-#define CORE_GRAPHICS_LINE2D_H_
+#ifndef _LL_LINE2D_H_
+#define _LL_LINE2D_H_
 
-namespace ml {
-
-template<class T>
-class Line2
+namespace LLib
 {
-public:
 
-    Line2(const LineSegment2<T> &segment)
+    template<typename T>
+    class Line2
     {
-        m_p0 = segment.p0();
-        m_dir = segment.delta();
+        private:
+        	vec2<T> p;
+        	vec2<T> dir;
+
+        public:
+            Line2(const vec2<T> &p0, const vec2<T> &p1)
+
+        	const vec2<T> & getP() const
+        	const vec2<T> & getDir() const
+
+    };  // class Line2
+
+    template <typename T>
+    std::ostream &operator<<(std::ostream &os, const Line2<T> &l)
+    {
+        os << l.getP() << ", " << l.getDir() << std::endl;
+        return os;
     }
-    Line2(const vec2<T> &p0, const vec2<T> &p1)
+
+    /*
+            Line2 Implementation
+    */
+    template<typename T>
+    inline Line2<T>::Line2(const vec2<T> &p0, const vec2<T> &p1)
     {
-        m_p0 = p0;
-        m_dir = p1 - p0;
+        p = p0;
+        dir = p1 - p0;
+        dir.normalize();
 	}
 
-	const vec2<T>& p0() const
+    template<typename T>
+	inline const vec2<T> &Line2<T>::getP()
     {
-        return m_p0;
+        return p;
 	}
 
-	const vec2<T>& dir() const
+    template<typename T>
+	inline const vec2<T> &Line2<T>::getDir()
     {
-        return m_dir;
+        return dir;
 	}
 
-private:
-	vec2<T> m_p0;
-	vec2<T> m_dir;
-};
+    /*
+            Line2 Defination
+    */
+    typedef Line2<float> Line2f;
+    typedef Line2<double> Line2d;
 
-typedef Line2<float> Line2f;
-typedef Line2<double> Line2d;
+}  // namespace LLib
 
-}  // namespace ml
-
-#endif  // CORE_GRAPHICS_LINE2D_H_
+#endif  // _LL_LINE2D_H_

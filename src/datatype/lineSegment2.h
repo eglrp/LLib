@@ -1,44 +1,60 @@
-#ifndef CORE_GRAPHICS_LINESEGMENT2_H_
-#define CORE_GRAPHICS_LINESEGMENT2_H_
+#ifndef _LL_LINESEGMENT2_H_
+#define _LL_LINESEGMENT2_H_
 
-namespace ml {
-
-template<class T>
-class LineSegment2
+namespace LLib
 {
-public:
 
-    LineSegment2(const vec2<T> &p0, const vec2<T> &p1)
+    template<typename T>
+    class LineSegment2
     {
-        m_p0 = p0;
-        m_p1 = p1;
-        m_delta = m_p1 - m_p0;
-	}
+        private:
+        	vec2<T> p0;
+        	vec2<T> p1;
 
-	const vec2<T>& p0() const
+        public:
+            LineSegment2(const vec2<T> &p0_, const vec2<T> &p1_)
+
+        	const vec2<T> &getP0() const
+        	const vec2<T> & getP1() const
+
+    };  // class LineSegment2
+
+    template <typename T>
+    std::ostream &operator<<(std::ostream &os, const LineSegment2<T> &l)
     {
-        return m_p0;
-	}
+        os << l.getP0() << ", " << l.getP1() << std::endl;
+        return os;
+    }
 
-	const vec2<T>& p1() const
+    /*
+            LineSegment2 Implementation
+    */ 
+
+    template<typename T>
+    inline LineSegment2<T>::LineSegment2(const vec2<T> &p0_, const vec2<T> &p1_)
     {
-        return m_p1;
-	}
+        p0 = p0_;
+        p1 = p1_;
+    }
 
-	const vec2<T>& delta() const
+    template<typename T>
+    inline const vec2<T> &LineSegment2<T>::getP0()
     {
-        return m_delta;
-	}
+        return p0;
+    }
 
-private:
-	vec2<T> m_p0;
-	vec2<T> m_p1;
-	vec2<T> m_delta;  //p1 - p0
-};
+    template<typename T>
+    inline const vec2<T> &LineSegment2<T>::getP1()
+    {
+        return p1;
+    }
 
-typedef LineSegment2<float> LineSegment2f;
-typedef LineSegment2<double> LineSegment2d;
+    /*
+            LineSegment2 Defination
+    */ 
+    typedef LineSegment2<float> LineSegment2f;
+    typedef LineSegment2<double> LineSegment2d;
 
-}  // namespace ml
+}  // namespace LLib
 
-#endif  // CORE_GRAPHICS_LINESEGMENT2D_H_
+#endif  // _LL_LINESEGMENT2D_H_
