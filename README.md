@@ -37,12 +37,13 @@ LLib is a library to support  my own research prjects on robotic perception whic
 17. [ICPCUDA](https://github.com/mp3guy/ICPCUDA): Super fast implementation of ICP in CUDA for compute capable devices 2.0 or higher
 18. [SimpleOctree](https://github.com/brandonpelfrey/SimpleOctree): A simple octree with good commenting for learning how octrees work
 19. [tnt](https://github.com/pytorch/tnt): Simple tools for logging and visualizing, loading and training
+20. [voxelizer](https://github.com/karimnaaji/voxelizer): Header only mesh voxelizer in c99
+21. [3d-quickhull](https://github.com/karimnaaji/3d-quickhull): Header only 3d quickhull in c99
 
 ## Algorithms
 1. [Marching Cubes](http://paulbourke.net/geometry/polygonise/)
 2. [Raycasting](https://lodev.org/cgtutor/raycasting.html)
 3. EKF
-4. ICP
 
 ## Sensor
 1. Camera (Mono/Stereo/Multi/Fisheye/RGD-D)
