@@ -55,7 +55,7 @@ LLib is a library to support  my own research prjects on robotic perception whic
 2. Point (2d/3d)
 3. LineSegment (2d/3d)
 4. Point Cloud
-5. Plane
+5. plane
 6. Octree
 7. Voxel
 8. Grid (2d/3d)
